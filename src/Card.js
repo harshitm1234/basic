@@ -1,15 +1,15 @@
-import React from 'react';
-import './Card.css';
+import React from "react";
+import "./Card.css";
 
-function Card(props) {
-    return (
-        <div className="card">
-            <img src="" alt="Avatar" style={{width:"100%"}} />
-            <div className="container">
-                <p>props</p>
-            </div>
-        </div>
-    )
+function Card({ data }) {
+	return (
+		<div className="card-container">
+			<img src={data.image_Url} />
+			<div className="title-container">
+				<h3>{data.title}</h3>
+			</div>
+		</div>
+	);
 }
 
 export default Card;

@@ -1,10 +1,8 @@
-export const rootReducer = function (state = initialState, action) {
-    
-};
+export const rootReducer = function (state = initialState, action) {};
 
-initialState = {
-    searchValue="",
-    filterResult=[],
-    lastSearchedValue="",
-    queryLength=16,
-}
+const initialState = {
+	searchValue: "",
+	filterResult: [],
+	lastSearchedValue: "",
+	queryLength: 16,
+};

@@ -1,25 +1,59 @@
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App {
-  background-color: #3975eb;
-  min-height: 100vh;
-}
-
 .App-search {
-  padding-top: 20px;
-  display: flex;
-  justify-content: center;
+	margin-top: 20px;
+	margin-bottom: 2%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 75%;
+	height: 50px;
+	border: 2px solid #ffff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-search > input {
+	width: 90%;
+	height: 100%;
+	border: none;
+	background-color: #70707041;
+}
+.App-search > input::placeholder {
+	color: #ffff;
+	font-weight: 600;
+	font-size: medium;
+	padding-left: 2%;
+}
+
+.App-search > button {
+	width: 10%;
+	height: 100%;
+	border: none;
+	background-color: #70707041;
+	color: #ffff;
+	font-weight: 600;
+	font-size: medium;
+}
+
+.white {
+	color: #ffff;
+}
+.card-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.load {
+	display: flex;
+	justify-content: center;
+}
+
+.load > button {
+	background-color: #70707041;
+	color: #ffff;
+	font-weight: 600;
+	font-size: medium;
+	width: 20%;
+	height: 50px;
+	border: 2px solid #ffff;
+	margin: 2%;
 }
