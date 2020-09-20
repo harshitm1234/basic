@@ -29,6 +29,7 @@
 	height: 100%;
 	border: none;
 	background-color: #70707041;
+	padding-left: 2%;
 }
 .App-search > input::placeholder {
 	color: #ffff;
@@ -45,6 +46,7 @@
 	color: #ffff;
 	font-weight: 600;
 	font-size: medium;
+	cursor: pointer;
 }
 
 .white {
@@ -71,4 +73,5 @@
 	height: 50px;
 	border: 2px solid #ffff;
 	margin: 2%;
+	cursor: pointer;
 }

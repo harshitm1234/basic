@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import "./App.css";
+import { connect } from 'react-redux'
 import Card from "./Card.js";
 
-function App() {
+function App(props) {
 	const [searchValue, setSearchValue] = useState("");
 	const [filterResult, setFilterResult] = useState([]);
 	const [lastSearchedValue, setLastSearchedValue] = useState("");
-	const [queryLength, setQueryLength] = useState(16);
-	const [url, setUrl] = useState("");
 
 	/**
 	 * Input change handler
@@ -25,7 +24,7 @@ function App() {
 	 */
 	const fetchCallHandler = (search, length) => {
 		const searchUrl = `https://api.jikan.moe/v3/search/anime?q=${search}&limit=${length}`;
-		setUrl(searchUrl);
+		props.onSetUrl(searchUrl);
 		fetch(searchUrl)
 			.then((response) => response.json())
 			.then((data) => {
@@ -42,7 +41,7 @@ function App() {
 	 * Search Button Handler
 	 */
 	const searchClickHandler = () => {
-		setQueryLength(16);
+		props.onSetQueryLength(16);
 		fetchCallHandler(searchValue, 16);
 		setLastSearchedValue(searchValue);
 	};
@@ -51,8 +50,8 @@ function App() {
 	 * handle load more click functionality
 	 */
 	const loadMoreClickHandler = () => {
-		const query = queryLength + 8;
-		setQueryLength(query);
+		const query = props.queryLength + 8;
+		props.onSetQueryLength(query);
 		if (query < 128) fetchCallHandler(lastSearchedValue, query);
 	};
 	return (
@@ -66,10 +65,10 @@ function App() {
 			<div className="App">
 				<center>
 					<div>
-						{url.length ? (
+						{props.urlVal.length ? (
 							<>
 								<span>Requesting:</span>
-								<span className="white">{url}</span>
+								<span className="white">{props.urlVal}</span>
 							</>
 						) : null}
 					</div>
@@ -90,4 +89,18 @@ function App() {
 	);
 }
 
-export default App;
+const mapStateToProps = state => {
+	return {
+		urlVal: state.url,
+		queryLength: state.queryLength,
+	};
+}
+
+const mapDispatchtoProps = dispatch => {
+	return {
+		onSetUrl: (url) => dispatch({ type: 'URL_SET', payload: { url: url } }),
+		onSetQueryLength: (length) => dispatch({ type: 'LENGTH_SET', payload: { queryLength: length } })
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchtoProps)(App);

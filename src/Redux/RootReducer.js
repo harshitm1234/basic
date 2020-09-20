@@ -1,8 +1,27 @@
-export const rootReducer = function (state = initialState, action) {};
+export const rootReducer = function (state = initialState, action) {
+    const { type, payload } = action;
+    switch (type) {
+        case "URL_SET": {
+            return {
+                ...state,
+                url: payload.url,
+            }
+        }
+        case "LENGTH_SET": {
+            return {
+                ...state,
+                url: payload.url,
+            }
+        }
+        default : {
+            return {
+                ...state
+            }
+        }
+    }
+};
 
 const initialState = {
-	searchValue: "",
-	filterResult: [],
-	lastSearchedValue: "",
-	queryLength: 16,
+    queryLength: 16,
+    url: "",
 };
