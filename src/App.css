@@ -1,3 +1,17 @@
+.App {
+	padding-top: 7%;
+}
+@media only screen and (max-width: 768px) {
+	.App {
+		padding-top: 30%;
+	}
+}
+.center {
+	padding-left: 12%;
+	padding-right: 12%;
+	background-color: #3975eb;
+}
+
 .App-search {
 	margin-top: 20px;
 	margin-bottom: 2%;
@@ -7,6 +21,7 @@
 	width: 75%;
 	height: 50px;
 	border: 2px solid #ffff;
+	position: fixed;
 }
 
 .App-search > input {

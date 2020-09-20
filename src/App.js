@@ -55,33 +55,37 @@ function App() {
 		if (query < 128) fetchCallHandler(lastSearchedValue, query);
 	};
 	return (
-		<div className="App">
-			<center>
+		<>
+			<div className="center">
 				<div className="App-search">
 					<input placeholder="Search Here" value={searchValue} onChange={handleInputChange} />
 					<button onClick={searchClickHandler}>Go</button>
 				</div>
-				<div>
-					{filterResult.length ? (
-						<>
-							<span>Requesting:</span>
-							<span className="white">{url}</span>
-						</>
-					) : null}
-				</div>
-			</center>
+			</div>
+			<div className="App">
+				<center>
+					<div>
+						{filterResult.length ? (
+							<>
+								<span>Requesting:</span>
+								<span className="white">{url}</span>
+							</>
+						) : null}
+					</div>
+				</center>
 
-			<div className="card-grid">
-				{filterResult.length ? (
-					filterResult.map((element) => <Card key={element.id} data={element} />)
-				) : (
-					<p>No data</p>
-				)}
+				<div className="card-grid">
+					{filterResult.length ? (
+						filterResult.map((element) => <Card key={element.id} data={element} />)
+					) : (
+						<p>No data</p>
+					)}
+				</div>
+				<div className="load">
+					{filterResult.length ? <button onClick={loadMoreClickHandler}>Load More</button> : null}
+				</div>
 			</div>
-			<div className="load">
-				{filterResult.length ? <button onClick={loadMoreClickHandler}>Load More</button> : null}
-			</div>
-		</div>
+		</>
 	);
 }
 
