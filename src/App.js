@@ -24,8 +24,9 @@ function App() {
 	 * @param {*} length
 	 */
 	const fetchCallHandler = (search, length) => {
-		setUrl(`https://api.jikan.moe/v3/search/anime?q=naruto&limit=${length}`);
-		fetch(url)
+		const searchUrl = `https://api.jikan.moe/v3/search/anime?q=${search}&limit=${length}`;
+		setUrl(searchUrl);
+		fetch(searchUrl)
 			.then((response) => response.json())
 			.then((data) => {
 				let filter = [];
@@ -65,7 +66,7 @@ function App() {
 			<div className="App">
 				<center>
 					<div>
-						{filterResult.length ? (
+						{url.length ? (
 							<>
 								<span>Requesting:</span>
 								<span className="white">{url}</span>
@@ -78,8 +79,8 @@ function App() {
 					{filterResult.length ? (
 						filterResult.map((element) => <Card key={element.id} data={element} />)
 					) : (
-						<p>No data</p>
-					)}
+							<p>No data</p>
+						)}
 				</div>
 				<div className="load">
 					{filterResult.length ? <button onClick={loadMoreClickHandler}>Load More</button> : null}
